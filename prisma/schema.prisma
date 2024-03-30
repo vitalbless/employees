@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+//создаем модели для таблиц с их столбцами а потом мигрируем их в бд через команду
+model User{
+  //uuid генерирует уникальные айди
+  id String @id @default(uuid())
+  email String
+  password String
+  name String
+  //строчка говорит о том что юзер может создавать сотрудников
+  createdEmployee Employee[]
+}
+model Employee{
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  age String
+  adress String
+  //две строчки связи с таблицей User
+  user User @relation(fields: [userId],references: [id])
+  userId String
+}
