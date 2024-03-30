@@ -3,18 +3,18 @@ const prisma = require('../prisma/prisma-client');
 
 const auth = async (req, res, next) => {
   try {
+    //split работает так что : ' ' — в одинарных скобочках мы указали разделитель в данном случае это пробел , то есть делить будем по пробелам , bearer нам не нужен он из за разделителя будет под
+    //цифрой 0 , а уже наш токен будет по цифрой 1 , поэтому и указываем что берем 1 значение из массива.
     let token = req.headers.authorization?.split(' ')[1];
-    console.log('Полученный токен:', token);
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log('Полученный decoded:', decoded);
+
     const user = await prisma.user.findUnique({
       where: {
         id: decoded.id,
       },
     });
 
-    console.log('Полученный user:', user);
     req.user = user;
 
     next();
