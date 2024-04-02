@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.11.0",
+    "antd": "^5.16.0",
     "bcrypt": "^5.1.1",
     "concurrently": "^8.2.2",
     "cookie-parser": "~1.4.4",
