@@ -1,0 +1,4 @@
+.custom-button-sotrudniki.ant-btn:focus,
+.custom-button-sotrudniki.ant-btn:hover {
+  outline: none; /* Убираем подсветку при наведении и фокусе */
+}
