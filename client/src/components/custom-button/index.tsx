@@ -10,6 +10,7 @@ type Props = {
   loading?: boolean;
   shape?: 'default' | 'circle' | 'round' | undefined;
   icon?: React.ReactNode;
+  ghost?: true;
 };
 
 const CustomButton = ({
@@ -21,6 +22,7 @@ const CustomButton = ({
   shape,
   icon,
   onClick,
+  ghost,
 }: Props) => {
   return (
     <Form.Item>
@@ -32,6 +34,7 @@ const CustomButton = ({
         shape={shape}
         icon={icon}
         onClick={onClick}
+        ghost={ghost}
       >
         {children}
       </Button>

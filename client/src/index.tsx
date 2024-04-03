@@ -6,14 +6,17 @@ import { store } from './app/store';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import router from './router/router';
+import { ConfigProvider, theme } from 'antd';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
-
+//Конфигпровайдер нужен для темной темыy
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
+        <RouterProvider router={router} />
+      </ConfigProvider>
     </Provider>
   </React.StrictMode>
 );
