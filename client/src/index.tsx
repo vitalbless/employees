@@ -10,7 +10,7 @@ import { ConfigProvider, theme } from 'antd';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
-//Конфигпровайдер нужен для темной темыy
+//Конфигпровайдер нужен для темной темы
 root.render(
   <React.StrictMode>
     <Provider store={store}>

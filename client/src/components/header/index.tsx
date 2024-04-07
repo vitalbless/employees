@@ -12,7 +12,7 @@ const Header = () => {
       <Space>
         <TeamOutlined className={styles.teamIcon} />
         <Link to={Paths.home}>
-          <CustomButton type='text' ghost={true}>
+          <CustomButton type='link' ghost={true}>
             <Typography.Title level={1}>Сотрудники</Typography.Title>
           </CustomButton>
         </Link>
