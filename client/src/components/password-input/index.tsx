@@ -29,6 +29,12 @@ const PasswordInput = ({ name, placeholder, dependencies }: Props) => {
               }
               return Promise.reject(new Error('Пароли должны совпадать'));
             } else {
+              if (value.length < 6) {
+                return Promise.reject(
+                  new Error('Пароль должен быть длиннее 6-ти символов')
+                );
+              }
+              return Promise.resolve();
             }
           },
         }),
