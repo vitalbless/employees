@@ -6,13 +6,17 @@ const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:8000/api',
   //prepareHeaders: (headers, { getState }) => {const token = (getState()as RootState).auth},
 });
-//если какой то сервер не отвечает  , то в maxretries пишем условно значение 1 , то есть повторить один и тот же запрос 3 раза если он не выполнился
+// Настраиваем повтор запроса, если сервер не отвечает
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 1 });
 
-//endpoints в дальнейшем можно расширять
+// Создаём наш инструмент для работы с API
 export const api = createApi({
+  // Указываем путь, где будут храниться данные из запросов
   reducerPath: 'splitApi',
+  // Устанавливаем наш базовый запрос с возможностью повтора
   baseQuery: baseQueryWithRetry,
+  // Говорим инструменту обновлять данные при каждой загрузке страницы или изменении аргументов запроса
   refetchOnMountOrArgChange: true,
+  // Здесь можно добавлять разные запросы к серверу, но пока не добавляем ничего
   endpoints: () => ({}),
 });
