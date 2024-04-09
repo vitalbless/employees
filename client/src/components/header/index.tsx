@@ -12,19 +12,19 @@ const Header = () => {
       <Space>
         <TeamOutlined className={styles.teamIcon} />
         <Link to={Paths.home}>
-          <CustomButton type='link' ghost={true}>
+          <CustomButton type='link'>
             <Typography.Title level={1}>Сотрудники</Typography.Title>
           </CustomButton>
         </Link>
       </Space>
       <Space>
         <Link to={Paths.register}>
-          <CustomButton type='text' ghost={true} icon={<UserOutlined />}>
+          <CustomButton type='text' icon={<UserOutlined />}>
             Зарегистрироваться
           </CustomButton>
         </Link>
         <Link to={Paths.login}>
-          <CustomButton type='text' ghost={true} icon={<LoginOutlined />}>
+          <CustomButton type='text' icon={<LoginOutlined />}>
             Войти
           </CustomButton>
         </Link>

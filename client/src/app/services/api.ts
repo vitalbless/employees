@@ -1,10 +1,19 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
+import { RootState } from '../store';
 
 //мой хост , можно заменить на переменную из env.
 //api/user или employees будут идти через эту ссылку
 const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:8000/api',
-  //prepareHeaders: (headers, { getState }) => {const token = (getState()as RootState).auth},
+  prepareHeaders: (headers, { getState }) => {
+    //мы получаем токен из нашего localstorage или state и привязываем его к запросу
+    const token =
+      (getState() as RootState).auth.user?.token ||
+      localStorage.getItem('token');
+    if (token && token !== null) {
+      headers.set('authorization', `Bearer ${token}`);
+    }
+  },
 });
 // Настраиваем повтор запроса, если сервер не отвечает
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 1 });
