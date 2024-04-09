@@ -14,7 +14,7 @@ const Login = () => {
     try {
       //unwrap получает данные почти тоже самое что json parse
       await loginUser(data).unwrap();
-    } catch (error) {}
+    } catch (err) {}
   };
   return (
     <Layout>
