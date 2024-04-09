@@ -20,13 +20,38 @@ const slice = createSlice({
     logout: () => initialState,
   },
   extraReducers: (builder) => {
-    builder.addMatcher(
-      //если логин успешно выполнтлся то выполни функцию
-      authApi.endpoints.login.matchFulfilled,
-      (state, action) => {
-        state.user = action.payload;
-        state.isAuthenticated = true;
-      }
-    );
+    builder
+      .addMatcher(
+        //если логин успешно выполнтлся то выполни функцию
+        authApi.endpoints.login.matchFulfilled,
+        (state, action) => {
+          state.user = action.payload;
+          state.isAuthenticated = true;
+        }
+      )
+      .addMatcher(
+        //если логин успешно выполнтлся то выполни функцию
+        authApi.endpoints.register.matchFulfilled,
+        (state, action) => {
+          state.user = action.payload;
+          state.isAuthenticated = true;
+        }
+      )
+      .addMatcher(
+        //если логин успешно выполнтлся то выполни функцию
+        authApi.endpoints.current.matchFulfilled,
+        (state, action) => {
+          state.user = action.payload;
+          state.isAuthenticated = true;
+        }
+      );
   },
 });
+
+export const { logout } = slice.actions;
+export default slice.reducer;
+
+export const selectIsAuthenticated = (state: RootState) =>
+  state.auth.isAuthenticated;
+
+export const selectUser = (state: RootState) => state.auth.user;

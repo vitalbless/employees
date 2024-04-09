@@ -6,13 +6,21 @@ import PasswordInput from '../../components/password-input';
 import CustomButton from '../../components/custom-button';
 import { Link } from 'react-router-dom';
 import { Paths } from '../../paths';
+import { UserData, useLoginMutation } from '../../app/services/auth';
 
 const Login = () => {
+  const [loginUser, loginUserResult] = useLoginMutation();
+  const login = async (data: UserData) => {
+    try {
+      //unwrap получает данные почти тоже самое что json parse
+      await loginUser(data).unwrap();
+    } catch (error) {}
+  };
   return (
     <Layout>
       <Row align='middle' justify='center'>
         <Card title='Вход' style={{ width: '30rem' }}>
-          <Form onFinish={() => null}>
+          <Form onFinish={login}>
             <CustomInput name='email' placeholder='Email' type='email' />
             <PasswordInput name='password' placeholder='Пароль' />
             <CustomButton type='primary' htmlType='submit'>
