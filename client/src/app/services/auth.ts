@@ -14,7 +14,7 @@ export const authApi = api.injectEndpoints({
     login: builder.mutation<ResponseLoginData, UserData>({
       query: (userData) => ({
         //это ссылка на роут user.js в папке router api/user/login
-        url: '/user/login',
+        url: '/users/login',
         method: 'POST',
         body: userData,
       }),
@@ -22,7 +22,7 @@ export const authApi = api.injectEndpoints({
     register: builder.mutation<ResponseLoginData, UserData>({
       query: (userData) => ({
         //это ссылка на роут user.js в папке router api/user/login
-        url: '/user/register',
+        url: '/users/register',
         method: 'POST',
         body: userData,
       }),
@@ -30,7 +30,7 @@ export const authApi = api.injectEndpoints({
     current: builder.query<ResponseLoginData, void>({
       query: () => ({
         //это ссылка на роут user.js в папке router api/user/login
-        url: '/user/current',
+        url: '/users/current',
         method: 'GET',
       }),
     }),
