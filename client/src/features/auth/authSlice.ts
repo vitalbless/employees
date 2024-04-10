@@ -30,7 +30,7 @@ const slice = createSlice({
         }
       )
       .addMatcher(
-        //если логин успешно выполнтлся то выполни функцию
+        //если регистрация успешно выполнтлся то выполни функцию
         authApi.endpoints.register.matchFulfilled,
         (state, action) => {
           state.user = action.payload;
@@ -38,7 +38,7 @@ const slice = createSlice({
         }
       )
       .addMatcher(
-        //если логин успешно выполнтлся то выполни функцию
+        //если пользователи успешно получились то выполни функцию
         authApi.endpoints.current.matchFulfilled,
         (state, action) => {
           state.user = action.payload;
