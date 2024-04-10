@@ -3,10 +3,14 @@ import { Paths } from '../paths';
 import Login from '../pages/login';
 import Register from '../pages/register';
 import Employees from '../pages/employees';
+import AddEmployee from '../pages/add-employee';
+import Status from '../pages/status';
 
 const router = createBrowserRouter([
   { path: Paths.home, element: <Employees /> },
   { path: Paths.login, element: <Login /> },
   { path: Paths.register, element: <Register /> },
+  { path: Paths.employeeAdd, element: <AddEmployee /> },
+  { path: `${Paths.status}/:status`, element: <Status /> },
 ]);
 export default router;

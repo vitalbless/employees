@@ -2,7 +2,6 @@
 import { Employee } from '@prisma/client';
 import { api } from './api';
 
-// Создаём API для авторизации, интегрируя его с основным API
 export const employeesApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllEmployees: builder.query<Employee[], void>({
